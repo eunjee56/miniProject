@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="board">
+
+	<select id="category" resultType="List" parameterType="Map">
+	
+	select b.POST_NUM, b.TITLE, b.WRITTENDATE, b.VIEWPOINTS, b.THUMBSUP c.FAHION_CATE_NAME, m.ID
+	from MEMBER_INFO m FASHION_CATEGORY c POST b
+	where b.SEQ_ID=m.SEQ_ID and c.FASHION_CATE_NO = b.FASHION_CATE_NO
+	
+	</select>
+	
+	<select id="list" resultType="List" parameterType="Map">
+	</select>
+	
+	<insert id="merge" parameterType="Map">
+	</insert>
+
+	<insert id="insert" parameterType="Map">
+	</insert>
+
+	<update id="update" parameterType="Map">
+	</update>
+
+	<delete id="delete" parameterType="Map">
+	</delete>
+</mapper>
