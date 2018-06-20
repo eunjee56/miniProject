@@ -82,13 +82,13 @@
         <div class="w3-container w3-padding w3-black">
           <h4>Follow Me</h4>
         </div>
-        <div class="w3-container w3-xlarge w3-padding">
-          <i class="fa fa-facebook-official w3-hover-opacity"></i>
-          <i class="fa fa-instagram w3-hover-opacity"></i>
-          <i class="fa fa-snapchat w3-hover-opacity"></i>
-          <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-          <i class="fa fa-twitter w3-hover-opacity"></i>
-          <i class="fa fa-linkedin w3-hover-opacity"></i>
+        <div class="w3-container w3-xlarge w3-padding"></a>
+           <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+           <a href="https://www.instagram.com/fashion.resort/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+           <a href="https://www.snapchat.com/" target="_blank"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+           <a href="https://www.pinterest.co.kr/topics/fashion-trends/" target="_blank"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+           <a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+           <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
         </div>
       </div>
       <hr>

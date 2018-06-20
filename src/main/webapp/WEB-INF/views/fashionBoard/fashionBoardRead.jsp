@@ -19,10 +19,6 @@
                 <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
             </tr>
             <tr>
-                <th>카테고리: </th>
-                <td><input type="text" placeholder="카테고리를 입력하세요. " name="subject" class="form-control"/></td>
-            </tr>
-            <tr>
                 <th>내용: </th>
                 <td><textarea cols="30" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
             </tr>

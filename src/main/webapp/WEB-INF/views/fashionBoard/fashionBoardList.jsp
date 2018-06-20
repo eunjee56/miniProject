@@ -10,19 +10,36 @@
 		<!-- main start -->
 
 		<div class="div_table table-responsive">
+			<h1>Fashion List</h1>
+
 			<table class="table table-hover">
-			
+
 				<thead>
 					<th>글번호</th>
 					<th>카테고리</th>
 					<th>글제목</th>
-					<th>작성자</th>	
+					<th>작성자</th>
 					<th>작성일</th>
 					<th>조회수</th>
 					<th>공감수</th>
 				</thead>
 
-				<tr>
+				<tbody>
+					<c:forEach items="${resultList}" var="resultData" varStatus="loop">
+						<tr
+							class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
+							<td>${resultData.POST_NUM}</td>
+							<td>${resultData.FASHION_CATE_NAME}</td>
+							<td>${resultData.TITLE}</td>
+							<td>${resultData.ID}</td>
+							<td>${resultData.WIRTTENDATE}</td>
+							<td>${resultData.VIEWPOINTS}</td>
+							<td>${resultData.THUMBSUP}</td>
+						</tr>
+					</c:forEach>
+
+					<%-- 
+				<<tr>
 					<td>6</td>
 					<td>pants</td>
 					<td><a href="<c:url value='/board/BoardRead'/>"> 여름에 코디하기 좋은 청바지는? &nbsp;</a> <span class="badge badge_new">new</span></td>
@@ -76,7 +93,8 @@
 					<td></td>
 					<td></td>
 					<td></td>
-				</tr>
+				</tr> 
+--%>
 			</table>
 		</div>
 		<div class="board_footer">

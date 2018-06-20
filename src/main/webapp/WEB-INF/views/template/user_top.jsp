@@ -4,13 +4,13 @@
 
 <!-- Navigation bar with social media icons -->
 <div class="w3-bar w3-black w3-hide-small">
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+  <a href="https://ko-kr.facebook.com/" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-facebook-official"></i></a>
+  <a href="https://www.instagram.com/?hl=ko" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-instagram"></i></a>
+  <a href="https://www.snapchat.com/" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-snapchat" ></i></a>
+  <a href="https://www.flickr.com/" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-flickr" ></i></a>
+  <a href="https://twitter.com/?lang=ko" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-twitter" ></i></a>
+  <a href="https://www.linkedin.com/" class="w3-bar-item w3-button" target="_blank"><i class="fa fa-linkedin"></i></a>
+  <a href="https://plus.google.com/communities/100802320032920241082" class="w3-bar-item w3-button google+"><i class="fa fa-search" target="_blank"></i></a>
 </div>
   
 <!-- w3-content defines a container for fixed size centered content, 
@@ -39,6 +39,7 @@ and is wrapped around the whole page content, except for the footer in this exam
         			<li class="active"><a href="<c:url value='/'/>">Home</a></li>
         			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Fashion <span class="caret"></span></a>
        					<ul class="dropdown-menu">
+          					<li><a href="<c:url value='/fashionBoard/fashionBoardList'/>">List All</a></li>
           					<li><a href="<c:url value='/menu/clothing'/>">Clothing</a></li>
          					<li><a href="<c:url value='/menu/shoes'/>">Shoes</a></li>
           					<li><a href="<c:url value='/menu/bag'/>">Bag</a></li>
