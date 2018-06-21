@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="menu">
+
+
+
+	<select id="baglist" resultType="Map" parameterType="Map">
+
+		select b.TITLE, b.CONTENTS, b.WRITTENDATE, m.NAME
+		from POST b, FASHION_CATEGORY c, MEMBER_INFO m
+		where b.FASHION_CATE_NO = c.FASHION_CATE_NO and  b.SEQ_ID=m.SEQ_ID
+		and b.SUBJECT_NUM='1' 
+		and  FASHION_CATE_NAME='BAG'
+	</select>
+
+	<select id="clothinglist" resultType="Map" parameterType="Map">
+
+		select b.TITLE, b.CONTENTS, b.WRITTENDATE, m.NAME
+		from POST b, FASHION_CATEGORY c,  MEMBER_INFO m
+		where b.FASHION_CATE_NO = c.FASHION_CATE_NO and b.SEQ_ID=m.SEQ_ID
+		and b.SUBJECT_NUM='1' 
+		and FASHION_CATE_NAME='CLOTHING'
+	</select>
+</mapper>

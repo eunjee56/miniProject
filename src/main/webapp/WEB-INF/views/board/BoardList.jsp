@@ -22,61 +22,20 @@
 					<th>공감수</th>
 				</thead>
 
-				<tr>
-					<td>6</td>
-					<td>pants</td>
-					<td><a href="<c:url value='/board/BoardRead'/>"> 여름에 코디하기 좋은 청바지는? &nbsp;</a> <span class="badge badge_new">new</span></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td>5</td>
-					<td>Blouse</td>
-					<td><a href="<c:url value='/board/BoardRead'/>"> 봄맞이 샤랄라 블라우스를 살펴보자 &nbsp;</a><span class="badge">12</span></td>
-					<td>NAME</td>
-					<td>2018.05.17</td>
-					<td>10</td>
-					<td>9</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>shoes</td>
-					<td>멀리서도 눈에 딱! 띄는 신발을 찾습니다</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td></td>
-					<td>Skirt</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td></td>
-					<td>T-shirt</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td></td>
-					<td>hat</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<tbody>
+					<c:forEach items="${resultList}" var="resultData" varStatus="loop">
+						<tr
+							class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}" onclick ="location.href='/board/list'">
+							<td>${resultData.POST_NUM}</td>
+							<td>${resultData.FASHION_CATE_NAME}</td>
+							<td>${resultData.TITLE}</td>
+							<td>${resultData.ID}</td>
+							<td>${resultData.WIRTTENDATE}</td>
+							<td>${resultData.VIEWPOINTS}</td>
+							<td>${resultData.THUMBSUP}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</div>
 		<div class="board_footer">

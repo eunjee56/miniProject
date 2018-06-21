@@ -64,7 +64,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 							</ul></li>
 						<li><a href="<c:url value='/home/news'/>">News</a></li>
 						<li><a href="<c:url value='/home/aboutMe'/>">About me</a></li>
-						<li><a href="<c:url value='/board/BoardList'/>">Board</a></li>
+						<li><a href="<c:url value='/board/list'/>">Board</a></li>
 					</ul>
 
 
