@@ -46,7 +46,7 @@ public class LoginController {
 			Map resultObject = (Map) service.checkMember(paramMap);
 			
 			if(resultObject!=null) { //아이디가 존재할 때, 
-			String pass =  (String) paramMap.get("PASSWORD"); //jsp에서 입력받은 값
+			String pass =  (String) paramMap.get("PASSWORD"); 		 //jsp에서 입력받은 값
 			String password = (String) resultObject.get("PASSWORD"); //db에서 아이디로 가져온 값.
 			String id = (String) paramMap.get("MEMBER_ID");
 				if (pass.equals(password) ) { // 검색된 비밀번호가 있으면,
