@@ -77,7 +77,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 									<c:when test="${resultMap.MEMBER_ID!=null}">
 										<li><a href="<c:url value='/login/login'/>"><i
 												class="fa fa-user fa-fw"></i> ${resultMap.MEMBER_ID}</a></li>
-										<li><a href="/member/LoginDelete.jsp" class="btn-success">Logout</a></li>
+										<li><a href="<c:url value='/login/logout'/>" class="btn-success">Logout</a></li>
 									</c:when>
 									<c:otherwise>
 										<li><a href="<c:url value='/login/login'/>"><i

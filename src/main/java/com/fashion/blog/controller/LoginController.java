@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class LoginController {
 		if ("login".equalsIgnoreCase(action)) {
 			viewName = viewName + action;
 
-		} else if ("signup".equalsIgnoreCase(action)) {
+		}else if ("signup".equalsIgnoreCase(action)) {
 			viewName = viewName + action;
 		} else if ("check".equalsIgnoreCase(action)) {
 			
@@ -66,6 +68,14 @@ public class LoginController {
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
 		return modelandView;
+	}
+	
+	@RequestMapping(value="/login/logout")
+	public ModelAndView logout(ModelAndView modelandview, HttpSession session) {
+		session.removeAttribute("id");
+		String viewName = "/home/home";
+		modelandview.setViewName(viewName);
+		return modelandview;
 	}
 
 }
