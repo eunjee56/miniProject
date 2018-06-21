@@ -1,4 +1,4 @@
-package com.fashion.blog.controller;
+/*package com.fashion.blog.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class SignUpController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 */
+	 *//*
 	@RequestMapping(value="/member/signUp", method = {RequestMethod.GET,RequestMethod.POST})
 	public String login(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
@@ -35,7 +35,7 @@ public class SignUpController {
 	}
 }
 
-/*
+
 import com.fashion.blog.service.SignUpService;
 import java.util.ArrayList;
 import java.util.HashMap;

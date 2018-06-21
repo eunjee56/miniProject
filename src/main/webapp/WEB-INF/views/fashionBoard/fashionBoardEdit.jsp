@@ -12,6 +12,7 @@
 		<!-- main start -->
 		<table class="table table-bordered">
 			<thead>
+			<h1>Fashion Edit</h1>
 			<caption>글쓰기</caption>
 			</thead>
 			<tbody>

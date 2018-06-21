@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ShareDao{
+public class ShareDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -19,8 +19,19 @@ public class ShareDao{
 		return result;
 	}
 
+	public void saveObject(String sqlMapId, Object dataMap) {
+		sqlSession.insert((String) sqlMapId, dataMap);
+	}
+
+	public Object findObject(String sqlMapId, Object dataMap) {
+
+		Object resultData = sqlSession.selectOne((String) sqlMapId, dataMap);
+		return resultData;
+	}
+
+
 	public Object getObject(String sqlMapId, Object dataMap) {
-		/*sqlMapId = "authority.read";*/
+		/* sqlMapId = "authority.read"; */
 		Object result = sqlSession.selectOne(sqlMapId, dataMap);
 		return result;
 	}
@@ -30,21 +41,15 @@ public class ShareDao{
 		Object resultList = sqlSession.selectList(sqlMapId, dataList);
 		return resultList;
 	}
-	
-	public Object saveObject(String sqlMapId, Object dataMap) {
-		Integer result = sqlSession.insert((String)sqlMapId, dataMap);
-		
-		return result;
-	}
 
 	public Object deleteObject(String sqlMapId, Object dataMap) {
-		
-		Integer result = sqlSession.delete(sqlMapId,dataMap);
+
+		Integer result = sqlSession.delete(sqlMapId, dataMap);
 		return result;
 	}
 
-/*	public Object getAuthority(String sqlMapId, Object dataMap) {
-		Object result = sqlSession.selectOne(sqlMapId, dataMap);
-		return result;
-	}*/
+	/*
+	 * public Object getAuthority(String sqlMapId, Object dataMap) { Object result =
+	 * sqlSession.selectOne(sqlMapId, dataMap); return result; }
+	 */
 }

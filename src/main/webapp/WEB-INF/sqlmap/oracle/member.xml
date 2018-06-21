@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	<insert id="insert" parameterType="Map">
+		insert into MEMBER_INFO (
+		SEQ_ID,ID,PASSWORD, NAME, TEL, EMAIL
+		)
+		values(
+		#{SEQ_ID},
+		#{MEMBER_ID},
+		#{PASSWORD},
+		#{NAME},
+		#{TEL},
+		#{EMAIL}
+		)
+	</insert>
+	
+	
+	<select id="check"  parameterType="Map" resultType="Map">
+	
+	select PASSWORD,ID from MEMBER_INFO where ID=#{MEMBER_ID}
+	
+	</select>
+	
+<!-- 	    INSERT INTO CIP_ORGANIZATION (
+			ORGANIZATION_SEQ	조직 일련번호
+			, NAME	명칭
+			, TELEPHONE	대표 전화번호
+			, ORDER_NUMBER	정렬순서
+			, PARENT_ORGANIZATION_SEQ	상위 조직 일련번호
+		)
+		values(
+			#{ORGANIZATION_SEQ}	조직 일련번호
+			, #{NAME}	명칭
+			, #{TELEPHONE}	대표 전화번호
+			, #{ORDER_NUMBER}	정렬순서
+			, #{PARENT_ORGANIZATION_SEQ}	상위 조직 일련번호
+		) -->
+	
+
+	<delete id="delete" parameterType="Map">
+		delete from CIP_MEMBER
+		where
+		MEMBER_SEQ = #{MEMBER_SEQ}
+	</delete>
+
+
+
+
+</mapper>

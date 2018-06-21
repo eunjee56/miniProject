@@ -27,7 +27,7 @@
 				<tbody>
 					<c:forEach items="${resultList}" var="resultData" varStatus="loop">
 						<tr
-							class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
+							class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}" >
 							<td>${resultData.POST_NUM}</td>
 							<td>${resultData.FASHION_CATE_NAME}</td>
 							<td>${resultData.TITLE}</td>
@@ -37,8 +37,9 @@
 							<td>${resultData.THUMBSUP}</td>
 						</tr>
 					</c:forEach>
-
-					<%-- 
+				</tbody>
+				<!-- 여기 줄 아무데나 클릭하면 read로 넘어가게. -->
+				<%-- 
 				<<tr>
 					<td>6</td>
 					<td>pants</td>
@@ -111,7 +112,8 @@
 			</div>
 			<div class="col-sm-3"></div>
 			<div class="col-sm-1">
-				<a class="btn btn-default" href="<c:url value='/board/BoardEdit'/>">새글</a>
+				<a class="btn btn-default"
+					href="<c:url value='/fashionBoard/fashionBoardEdit'/>">새글</a>
 			</div>
 
 		</div>
