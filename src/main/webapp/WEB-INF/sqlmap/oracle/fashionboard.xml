@@ -12,17 +12,63 @@
 		
 		 select b.POST_NUM, b.TITLE, b.WRITTENDATE, b.VIEWPOINTS, b.THUMBSUP, c.FASHION_CATE_NAME, m.ID 
 		 from MEMBER_INFO m, FASHION_CATEGORY c, POST b
-		 where 	b.SEQ_ID=m.SEQ_ID and c.FASHION_CATE_NO = b.FASHION_CATE_NO and b.SUBJECT_NUM=1 
-		 order by b.POST_NUM ASC
+		 where 	b.SEQ_ID=m.SEQ_ID and c.FASHION_CATE_NO = b.FASHION_CATE_NO 
+	</select>
+	
+	<select id="viewcount" parameterType="Map">
+		UPDATE POST SET VIEWPOINTS = VIEWPOINTS + 1 WHERE POST_NUM=${POST_NUM}
+	</select>
+	
+	<select id="read" resultType="Map" parameterType="Map">
+		 
+		
+		 select *
+		 from POST
+		 where 	POST_NUM = ${POST_NUM}
+	</select>
+	
+	<select id="category" resultType="Map" parameterType="Map">
+		 select *
+		 from FASHION_CATEGORY
 	</select>
 
 	<insert id="merge" parameterType="Map">
 	</insert>
 
 	<insert id="insert" parameterType="Map">
+		insert into POST(
+						POST_NUM,
+						TITLE,
+						WRITTENDATE,
+						WRITTENTIME,
+						VIEWPOINTS,
+						THUMBSUP,
+						CONTENTS,
+						SEQ_ID,
+						SUBJECT_NUM,
+						FASHION_CATE_NO)
+					values(
+						POST_NUM_SEQ.NEXTVAL,
+						#{TITLE},
+						'2018/06/19',
+						'14:00:00',
+						1,
+						'1',
+						#{CONTENTS},
+						'test01',
+						'1',
+						#{FASHION_CATE_NO}
+						)
 	</insert>
 
 	<update id="update" parameterType="Map">
+		UPDATE POST
+			   SET
+			   		TITLE = #{TITLE},
+					CONTENTS = #{CONTENTS},
+					FASHION_CATE_NO = #{FASHION_CATE_NO}
+				
+			   WHERE POST_NUM = #{POST_NUM}
 	</update>
 
 	<delete id="delete" parameterType="Map">

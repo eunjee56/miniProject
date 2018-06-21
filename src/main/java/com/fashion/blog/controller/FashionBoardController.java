@@ -54,6 +54,37 @@ public class FashionBoardController {
 		modelandView.addObject("resultList", resultList);
 		return modelandView;
 	}
+
+	@RequestMapping(value = "/fashionBoard",method = {RequestMethod.GET, RequestMethod.POST} )
+		public ModelAndView actonMethod(@RequestParam Map<String, Object> paramMap, 
+				 ModelAndView modelandView) {
+			String viewName = "/fashionBoard"+"/";
+			String action = (String) paramMap.get("action") ;
+			Map<String, Object> resultMap = new HashMap<String, Object>();
+			List<Object> resultList = new ArrayList<Object>();
+			if("fashionBoardList".equalsIgnoreCase(action)) {
+				viewName = viewName + action;
+				resultList = (List<Object>) fashionService.getList(paramMap);	
+			} else if ("fashionBoardRead".equalsIgnoreCase(action)) {
+				viewName = viewName + action;
+				resultMap = (Map<String, Object>) fashionService.getObject(paramMap);
+			} else if ("fashionBoardEdit".equalsIgnoreCase(action)) {
+				viewName = viewName + action;
+	     	} else if ("fashionBoardInsert".equalsIgnoreCase(action)) {
+				viewName = "/home/home";
+				fashionService.insert(paramMap);
+	     	} else if ("fashionBoardModify".equalsIgnoreCase(action)) {
+				viewName = viewName+"fashionBoardEdit";
+				resultMap = (Map<String, Object>) fashionService.getObject(paramMap);
+	     	} else if ("fashionBoardUpdate".equalsIgnoreCase(action)) {
+	     		viewName = "/home/home";
+				fashionService.update(paramMap);
+	     	}
+			modelandView.setViewName(viewName);
+			modelandView.addObject("resultMap", resultMap);
+			modelandView.addObject("resultList", resultList);
+			return modelandView;
+		}
 	
 	
 

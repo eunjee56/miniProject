@@ -53,9 +53,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Fashion <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a
-									href="<c:url value='/fashionBoard/fashionBoardList'/>">List
-										All</a></li>
+								<li><a href="<c:url value='/fashionBoard?action=fashionBoardList'/>">List All</a></li>
 								<li><a href="<c:url value='/menu/clothing'/>">Clothing</a></li>
 								<li><a href="<c:url value='/menu/shoes'/>">Shoes</a></li>
 								<li><a href="<c:url value='/menu/bag'/>">Bag</a></li>

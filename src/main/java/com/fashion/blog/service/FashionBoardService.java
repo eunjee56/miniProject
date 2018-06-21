@@ -17,5 +17,31 @@ public class FashionBoardService {
 		  
 		  return resultObject;
 	  }
+	  
+	  public Object getObject(Object dataMap) {
+		  String sqlMapId = "fashionboard.viewcount";
+		  dao.getUpdate(sqlMapId, dataMap);
+		  sqlMapId = "fashionboard.read";
+		  Object resultObject = dao.getObject(sqlMapId, dataMap);
+		  
+		  return resultObject;
+	  }
+	  
+	  public Object getCategoryList(Object dataMap) {
+		  String sqlMapId = "fashionboard.category";
+		  Object resultObject = dao.getList(sqlMapId, dataMap);
+		  
+		  return resultObject;
+	  }
+	  
+	  public void insert(Object dataMap) {
+		  String sqlMapId = "fashionboard.insert";
+		  dao.saveObject(sqlMapId, dataMap);
+	  }
+	  
+	  public void update(Object dataMap) {
+		  String sqlMapId = "fashionboard.update";
+		  dao.getUpdate(sqlMapId, dataMap);
+	  }
 
 }

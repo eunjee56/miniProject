@@ -48,6 +48,9 @@ public class ShareDao {
 		return result;
 	}
 
+	public void getUpdate(String sqlMapId, Object dataMap) {
+		sqlSession.update(sqlMapId,dataMap);
+	}
 	/*
 	 * public Object getAuthority(String sqlMapId, Object dataMap) { Object result =
 	 * sqlSession.selectOne(sqlMapId, dataMap); return result; }
