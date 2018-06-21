@@ -11,7 +11,7 @@
 
 		<c:forEach items="${resultList}" var="resultData" varStatus="loop">
 
-			<div class="form-group">
+			<div class="w3-ul w3-center">
 				<label for="name" class="col-sm-2 control-label">Title</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control" id="name" name="title"

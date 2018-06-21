@@ -29,31 +29,37 @@ public class MenuController {
 	@Autowired
 	MenuService menuservice;
 	
-
-	@RequestMapping(value = "/menu/{action}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView actonMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
+	
+	@RequestMapping(value = "/menu", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView actonMethod(@RequestParam Map<String, Object> paramMap, 
 			ModelAndView modelandView) {
-		String viewName = "/menu/";
+		String viewName = "/menu"+"/";
+		String action = (String) paramMap.get("action");
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Object> resultList = new ArrayList<Object>();
 
-		if ("clothing".equalsIgnoreCase(action)) {
-			viewName = viewName + action;
-			resultList=(List<Object>) menuservice.getClothingList(paramMap);
-
-		} else if ("shoes".equalsIgnoreCase(action)) {
-			viewName = viewName + action;
-			
-		} else if ("bag".equalsIgnoreCase(action)) {
-			viewName = viewName + action;
-			resultList=(List<Object>) menuservice.getBagList(paramMap);
-		
-		} else if ("accessory".equalsIgnoreCase(action)) {
-			viewName = viewName + action;
-			
-		}else {
-			viewName=viewName+"etc";
+		if ("calllist".equalsIgnoreCase(action)) {
+//			viewName = viewName + action;
+			resultList=(List<Object>) menuservice.getList(paramMap);
+//
+//		} else if ("shoes".equalsIgnoreCase(action)) {
+////			viewName = viewName + action;
+//			resultList=(List<Object>) menuservice.getList(paramMap);
+//			
+//		} else if ("bag".equalsIgnoreCase(action)) {
+////			viewName = viewName + action;
+//			resultList=(List<Object>) menuservice.getList(paramMap);
+//		
+//		} else if ("accessory".equalsIgnoreCase(action)) {
+////			viewName = viewName + action;
+//			resultList=(List<Object>) menuservice.getList(paramMap);
+//			
+//		}else {
+////			viewName=viewName+"etc";
+//			resultList=(List<Object>) menuservice.getList(paramMap);
+//		}
 		}
+		viewName=viewName+"menus";
 		modelandView.setViewName(viewName);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);

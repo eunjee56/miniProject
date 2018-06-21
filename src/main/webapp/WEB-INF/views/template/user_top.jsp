@@ -54,11 +54,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 							data-toggle="dropdown" href="#">Fashion <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="<c:url value='/fashionBoard?action=fashionBoardList'/>">List All</a></li>
-								<li><a href="<c:url value='/menu/clothing'/>">Clothing</a></li>
-								<li><a href="<c:url value='/menu/shoes'/>">Shoes</a></li>
-								<li><a href="<c:url value='/menu/bag'/>">Bag</a></li>
-								<li><a href="<c:url value='/menu/acc'/>">Accessory</a></li>
-								<li><a href="<c:url value='/menu/etc'/>">ETC</a></li>
+								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=10'/>">Clothing</a></li>
+								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=20'/>">Shoes</a></li>
+								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=30'/>">Bag</a></li>
+								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=40'/>">Accessory</a></li>
+								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=50'/>">ETC</a></li>
 							</ul></li>
 						<li><a href="<c:url value='/home/news'/>">News</a></li>
 						<li><a href="<c:url value='/home/aboutMe'/>">About me</a></li>

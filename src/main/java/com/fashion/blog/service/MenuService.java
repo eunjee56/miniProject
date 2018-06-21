@@ -11,18 +11,12 @@ public class MenuService {
 	  @Autowired
 	  ShareDao dao;
 	  
-	  public Object getBagList(Object dataMap) {
-		  String sqlMapId = "menu.baglist";
+	  public Object getList(Object dataMap) {
+		  String sqlMapId = "menu.list";
 		  Object resultObject = dao.getList(sqlMapId, dataMap);
 		  
 		  return resultObject;
 	  }
-
-	  public Object getClothingList(Object dataMap) {
-		  String sqlMapId = "menu.clothinglist";
-		  Object resultObject = dao.getList(sqlMapId, dataMap);
-		  
-		  return resultObject;
-	  }
-
 }
+
+
