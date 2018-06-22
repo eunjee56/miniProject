@@ -140,9 +140,9 @@
 		});
 	}
 	
-
 	/* 출처: http://lsk925.tistory.com/42?category=563175 [초보 개발자의 블로그] */
 </script>
+
 
 <!-- Blog entries -->
 <div class="w3-col l8 s12">
@@ -165,7 +165,7 @@
 												onkeydown="inputIdcheck()">
 											<!-- 	<button id="idcheck" onclick='idcheck()'>id중복검사</button> -->
 											
-											<input type="button" value="중복확인" onclick="idcheck()">
+											<!--  --><input type="button" value="중복확인" onclick="idcheck()">
 											
 											<input type="hidden" name="idDuplication" value="idUncheck">
 										</div>

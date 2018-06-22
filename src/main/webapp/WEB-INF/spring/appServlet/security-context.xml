@@ -7,25 +7,46 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 
-	<http security="none" pattern="/resources/**" />
-	<http security="none" pattern="/ws/**" />
-
+	<!-- <http security="none" pattern="/resources/**" /> <http security="none" 
+		pattern="/ws/**" /> -->
 	<http auto-config="true" use-expressions="true">
 		<!-- return boolean -->
-		<intercept-url pattern="/*"
-			access="hasRole('ROLE_USER')" />
+
+		<intercept-url pattern="/fashionBoard" access="hasRole('ROLE_SYSTEM')" />
+		<intercept-url pattern="/board/" access="hasAnyRole('ROLE_USER', 'ROLE_SYSTEM ')" />
+		<intercept-url pattern="/menu/" access="hasAnyRole('ROLE_USER', 'ROLE_SYSTEM')" />
+		<intercept-url pattern="/*" access="permitAll()" />
+	<!-- 	<intercept-url pattern="/login/*" access="permitAll()" /> -->
+
+
+		<form-login login-page="/login/login"
+			login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/login?fail=true"
+			default-target-url="/"
+			
+			username-parameter="username" password-parameter="password" />
+
+		<logout logout-success-url="/"
+			logout-url="/j_spring_security_logout" invalidate-session="true"
+			delete-cookies="JSESSIONID" />
+		<csrf disabled="true" />
+
 	</http>
 
-
-
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="member" password="12345" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
-
-
+  <authentication-manager>
+      <authentication-provider>
+<!--          <user-service>
+            <user name="user@aa" password="user" authorities="ROLE_USER" />
+            <user name="admin@aa" password="admin" authorities="ROLE_ADMIN" /> 
+         </user-service> -->
+        <jdbc-user-service data-source-ref="dataSource"   
+      users-by-username-query="select SEQ_ID as username, PASSWORD as password, 1 as enable
+                        from MEMBER_INFO
+                        where ID = ?"
+      authorities-by-username-query="select m.SEQ_ID as username, a.AUTHORITY_NAME as authority
+                           from AUTHORITY_REL m, AUTHORITY a
+                           where m.AUTHORITY_NUM= a.AUTHORITY_NUM and m.SEQ_ID = ?"/> 
+      </authentication-provider>
+   </authentication-manager>
 
 </beans:beans>

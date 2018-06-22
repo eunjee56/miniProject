@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!-- Navigation bar with social media icons -->
 <div class="w3-bar w3-black w3-hide-small">
@@ -34,6 +36,12 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<h6>
 			Welcome to the blog of <span class="w3-tag">Jane's world</span>
 		</h6>
+		<script>
+			console
+					.log('${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}');
+			/* 		[출처] jsp에서 Spring Security principal 불러오기|작성자 MOON
+			 */
+		</script>
 	</header>
 
 	<!-- Grid -->
@@ -53,18 +61,24 @@ and is wrapped around the whole page content, except for the footer in this exam
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Fashion <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="<c:url value='/fashionBoard?action=fashionBoardList'/>">List All</a></li>
-								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=10'/>">Clothing</a></li>
-								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=20'/>">Shoes</a></li>
-								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=30'/>">Bag</a></li>
-								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=40'/>">Accessory</a></li>
-								<li><a href="<c:url value='/menu?action=calllist&FASION_CATE_NO=50'/>">ETC</a></li>
+								<li><a
+									href="<c:url value='/fashionBoard?action=fashionBoardList'/>">List
+										All</a></li>
+								<li><a
+									href="<c:url value='/menu?action=calllist&FASION_CATE_NO=10'/>">Clothing</a></li>
+								<li><a
+									href="<c:url value='/menu?action=calllist&FASION_CATE_NO=20'/>">Shoes</a></li>
+								<li><a
+									href="<c:url value='/menu?action=calllist&FASION_CATE_NO=30'/>">Bag</a></li>
+								<li><a
+									href="<c:url value='/menu?action=calllist&FASION_CATE_NO=40'/>">Accessory</a></li>
+								<li><a
+									href="<c:url value='/menu?action=calllist&FASION_CATE_NO=50'/>">ETC</a></li>
 							</ul></li>
 						<li><a href="<c:url value='/home/news'/>">News</a></li>
 						<li><a href="<c:url value='/home/aboutMe'/>">About me</a></li>
 						<li><a href="<c:url value='/board/list'/>">Board</a></li>
 					</ul>
-
 
 					<ul class="nav navbar-nav navbar-right">
 
@@ -73,25 +87,35 @@ and is wrapped around the whole page content, except for the footer in this exam
 							<ul class="dropdown-menu">
 
 
+								<sec:authorize access="isAuthenticated()">
+									<sec:authentication property="principal.username"
+										var="user" />
+								</sec:authorize>
+								<sec:authorize access="!isAuthenticated()">
+									<sec:authentication property="principal" var="user" />
+								</sec:authorize>
+								
 								<c:choose>
-									<c:when test="${resultMap.MEMBER_ID!=null}">
+									<c:when test="${user!=null}">
 										<li><a href="<c:url value='/login/login'/>"><i
-												class="fa fa-user fa-fw"></i> ${resultMap.MEMBER_ID}</a></li>
-										<li><a href="<c:url value='/login/logout'/>" class="btn-success">Logout</a></li>
+												class="fa fa-user fa-fw"></i> ${user}</a></li>
+										<li><a href="/member/LoginDelete.jsp" class="btn-success">Logout</a></li>
 									</c:when>
 									<c:otherwise>
 										<li><a href="<c:url value='/login/login'/>"><i
 												class="fa fa-user fa-fw"></i> Login</a></li>
 
-								<li><a href="<c:url value='/login/signUp'/>"><i
-										class="fa fa-gear"></i> Sign Up</a></li>
+										<li><a href="<c:url value='/login/signUp'/>"><i
+												class="fa fa-gear"></i> Sign Up</a></li>
 									</c:otherwise>
 								</c:choose>
 
 
 
+
 							</ul></li>
 					</ul>
+
 
 
 					<%-- <ul class="nav navbar-nav navbar-right">

@@ -18,12 +18,20 @@
 		#{TEL},
 		#{EMAIL}
 		)
+		
+		insert into AUTHORITY_REL(
+		SEQ_ID, AUTHORITY_NUM)
+		values(
+		#{SEQ_ID},
+		100
+		)
+		
 	</insert>
 	
 	
 	<select id="check"  parameterType="Map" resultType="Map">
 	
-	select PASSWORD,ID from MEMBER_INFO where ID=#{MEMBER_ID}
+	select PASSWORD,ID,권한 from MEMBER_INFO where ID=#{MEMBER_ID}
 	
 	</select>
 	
