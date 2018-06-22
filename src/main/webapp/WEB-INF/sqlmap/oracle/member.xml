@@ -42,6 +42,11 @@
 			, #{PARENT_ORGANIZATION_SEQ}	상위 조직 일련번호
 		) -->
 	
+	<select id="idDoubleCheck" parameterType="Map" resultType="Map">
+	
+	select ID from MEMBER_INFO where ID=#{MEMBER_ID}
+	
+	</select>
 
 	<delete id="delete" parameterType="Map">
 		delete from CIP_MEMBER
