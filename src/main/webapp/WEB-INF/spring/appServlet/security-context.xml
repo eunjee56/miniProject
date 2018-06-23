@@ -9,6 +9,7 @@
 
 	<!-- <http security="none" pattern="/resources/**" /> <http security="none" 
 		pattern="/ws/**" /> -->
+	<http pattern="/" security="none"></http>
 	<http pattern="/login/login" security="none"></http>
 	<http pattern="/login/signup" security="none"></http>
 	<http auto-config="true" use-expressions="true">

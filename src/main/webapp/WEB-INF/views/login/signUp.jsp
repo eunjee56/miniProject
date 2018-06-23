@@ -86,7 +86,7 @@
 </script>
  -->
 
-	<script type="text/javascript">
+<script type="text/javascript">
 	var count = 0;
 	function idcheck() {
 		var text = $("#MEMBER_ID").val();
@@ -105,24 +105,24 @@
 	}
 
 	function overlapCheck() {
-		var param = "MEMBER_ID"+":"+ $("#MEMBER_ID").val();
-		if ($("#MEMBER_ID").val() == '' || $("#MEMBER_ID").val() == null)
-		{
+		var param = "MEMBER_ID" + ":" + $("#MEMBER_ID").val();
+		if ($("#MEMBER_ID").val() == '' || $("#MEMBER_ID").val() == null) {
 			alert("아이디를 입력하세요");
 			return false;
 		}
 		$.ajax({
-			
+
 			url : "<c:url value='/ws/idcheck'/>",
 			type : "POST",
-			data : {'MEMBER_ID':$("#MEMBER_ID").val()},
+			data : {
+				'MEMBER_ID' : $("#MEMBER_ID").val()
+			},
 			//cache : false,
 			//async : false,
 			dataType : "text",
-	
+
 			success : function(data) {
-				if (data == "")
-				{	
+				if (data == "") {
 					count = 1;
 					alert("사용 가능한 아이디입니다.")
 				} else {
@@ -134,12 +134,12 @@
 			error : function(request, status, error) {
 				if (request.status != '0') {
 					alert("code : " + request.status + "\r\nmessage : "
-					+ request.reponseText + "\r\nerror : " + error);
+							+ request.reponseText + "\r\nerror : " + error);
 				}
 			}
 		});
 	}
-	
+
 	/* 출처: http://lsk925.tistory.com/42?category=563175 [초보 개발자의 블로그] */
 </script>
 
@@ -157,31 +157,31 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<form role="form" method="POST" name="userInfo"
-										onsubmit="return checkValue()"
 										action="<c:url value='/member/insert' />">
 										<div class="form-group">
 											<label>MEMBER_ID</label> <input class="form-control"
 												type="text" name="MEMBER_ID" maxlenght="70" id="MEMBER_ID"
 												onkeydown="inputIdcheck()">
 											<!-- 	<button id="idcheck" onclick='idcheck()'>id중복검사</button> -->
-											
-											<!--  --><input type="button" value="중복확인" onclick="idcheck()">
-											
+
+											<!--  -->
+											<input type="button" value="중복확인" onclick="idcheck()">
+
 											<input type="hidden" name="idDuplication" value="idUncheck">
 										</div>
 										<div class="form-group">
 											<label>PASSWORD</label> <input class="form-control"
-												type="password" name="password"> <label>PASSWORDcheck</label>
+												type="password" name="PASSWORD"> <label>PASSWORDcheck</label>
 											<input class="form-control" type="password"
 												name="passwordcheck">
 										</div>
 										<div class="form-group">
 											<label>MEMBER NAME</label> <input class="form-control"
-												type="text" name="name">
+												type="text" name="NAME">
 										</div>
 										<div class="form-group">
 											<label>CELLPHONE</label> <input class="form-control"
-												type="text" name="tel" placeholder="01000000000">
+												type="text" name="TEL" placeholder="01000000000">
 											<p class="help-block">Base form 01000000000</p>
 										</div>
 										<div>
@@ -190,13 +190,22 @@
 										</div>
 										<div class="form-group">
 											<label>EMAIL</label> <input class="form-control" type="text"
-												name="email" placeholder="abcedfg@hijklmn">
+												name="EMAIL" placeholder="abcedfg@hijklmn">
 											<p class="help-block">Base form abcedfg@hijklmn</p>
 										</div>
-										<input type="hidden" name="${_csrf.parameterName}"
+										<div>
+
+											<label>Prefer Fashion Style</label></br> <input type="checkbox"
+												name="style" value="casual">Casual <input
+												type="checkbox"> <input type="checkbox" name="style"
+												value="formal">formal <input type="checkbox">
+											<input type="checkbox" name="style" value="casual">vintage
+											<input type="checkbox">
+
+										</div>
+										</br> </br> <input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
-										<button onclick="javascirpt:btn()" type="submit"
-											class="btn btn-default">
+										<button type="submit" class="btn btn-default">
 											<%-- ${paramMap.action == 'update' ? 'Update' : 'Insert' } --%>
 											Submit Button
 										</button>

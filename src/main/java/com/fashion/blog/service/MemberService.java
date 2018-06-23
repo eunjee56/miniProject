@@ -29,16 +29,33 @@ public class MemberService {
 	// return resultObject;
 	//
 	// }
-	public void saveObject(Map<String, Object> dataMap) {
+	public void saveObject1(Map<String, Object> dataMap) {
 		String uniqueSequence = commonUtil.getUniqueSequence();
 		System.out.println(uniqueSequence);
 		dataMap.put("SEQ_ID", uniqueSequence);
 
-		String sqlMapId = "member.insert";
+		String sqlMapId = "member.insert1";
 		// Object resultObject = (Integer) dao.saveObject(sqlMapId, dataMap);
 
 		dao.saveObject(sqlMapId, dataMap);
 
+	}
+	
+	public Object saveObject2(Map<String, Object> dataMap) {
+
+		String sqlMapId = "member.insert2";
+		// Object resultObject = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object resultObject =dao.getObject(sqlMapId, dataMap);
+		return resultObject;
+	}
+	
+	
+	
+	public void saveObject3(Map<String, Object> dataMap) {
+
+		String sqlMapId = "member.insert3";
+		// Object resultObject = (Integer) dao.saveObject(sqlMapId, dataMap);
+		dao.saveObject(sqlMapId, dataMap);
 	}
 
 	public Object checkMember(Object dataMap) {

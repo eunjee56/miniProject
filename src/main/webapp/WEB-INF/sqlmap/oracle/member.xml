@@ -5,8 +5,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	
-	<insert id="insert" parameterType="Map">
+
+	<insert id="insert1" parameterType="Map">
 		insert into MEMBER_INFO (
 		SEQ_ID,ID,PASSWORD, NAME, TEL, EMAIL
 		)
@@ -18,42 +18,43 @@
 		#{TEL},
 		#{EMAIL}
 		)
-		
-		insert into AUTHORITY_REL(
+
+
+	</insert>
+
+
+	<select id="insert2">
+		select SEQ_ID
+		from MEMBER_INFO
+		where SEQ_ID=#{SEQ_ID}
+	</select>
+
+
+	<insert id="insert3"> insert into AUTHORITY_REL(
 		SEQ_ID, AUTHORITY_NUM)
 		values(
 		#{SEQ_ID},
 		100
 		)
-		
 	</insert>
-	
-	
-	<select id="check"  parameterType="Map" resultType="Map">
-	
-	select PASSWORD,ID,권한 from MEMBER_INFO where ID=#{MEMBER_ID}
-	
+
+
+	<select id="check" parameterType="Map" resultType="Map">
+
+		select
+		PASSWORD,ID,권한 from MEMBER_INFO where ID=#{MEMBER_ID}
+
 	</select>
-	
-<!-- 	    INSERT INTO CIP_ORGANIZATION (
-			ORGANIZATION_SEQ	조직 일련번호
-			, NAME	명칭
-			, TELEPHONE	대표 전화번호
-			, ORDER_NUMBER	정렬순서
-			, PARENT_ORGANIZATION_SEQ	상위 조직 일련번호
-		)
-		values(
-			#{ORGANIZATION_SEQ}	조직 일련번호
-			, #{NAME}	명칭
-			, #{TELEPHONE}	대표 전화번호
-			, #{ORDER_NUMBER}	정렬순서
-			, #{PARENT_ORGANIZATION_SEQ}	상위 조직 일련번호
-		) -->
-	
+
+	<!-- INSERT INTO CIP_ORGANIZATION ( ORGANIZATION_SEQ 조직 일련번호 , NAME 명칭 , 
+		TELEPHONE 대표 전화번호 , ORDER_NUMBER 정렬순서 , PARENT_ORGANIZATION_SEQ 상위 조직 일련번호 
+		) values( #{ORGANIZATION_SEQ} 조직 일련번호 , #{NAME} 명칭 , #{TELEPHONE} 대표 전화번호 
+		, #{ORDER_NUMBER} 정렬순서 , #{PARENT_ORGANIZATION_SEQ} 상위 조직 일련번호 ) -->
+
 	<select id="idDoubleCheck" parameterType="Map" resultType="Map">
-	
-	select ID from MEMBER_INFO where ID=#{MEMBER_ID}
-	
+
+		select ID from MEMBER_INFO where ID=#{MEMBER_ID}
+
 	</select>
 
 	<delete id="delete" parameterType="Map">

@@ -40,8 +40,12 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<script>
 			console
 					.log('${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}');
-			/* 		[출처] jsp에서 Spring Security principal 불러오기|작성자 MOON
+			/*       [출처] jsp에서 Spring Security principal 불러오기|작성자 MOON
 			 */
+			 console
+				.log('${user}');
+			 console
+				.log('${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}');
 		</script>
 	</header>
 
@@ -87,13 +91,13 @@ and is wrapped around the whole page content, except for the footer in this exam
 							data-toggle="dropdown" href="#">Member <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 
-
 								<sec:authorize access="isAuthenticated()">
 									<sec:authentication property="principal.username" var="user" />
 								</sec:authorize>
 								<sec:authorize access="!isAuthenticated()">
 									<sec:authentication property="principal" var="user" />
 								</sec:authorize>
+								
 								<c:set var="principalName"
 									value="${pageContext.request.userPrincipal.name}" />
 								<c:choose>
@@ -104,6 +108,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 										<li><a href="<c:url value='/j_spring_security_logout'/>"
 											class="btn-success">Logout</a></li>
 									</c:when>
+									
 									<c:otherwise>
 										<li><a href="<c:url value='/login/login'/>"><i
 												class="fa fa-user fa-fw"></i> Login</a></li>
@@ -112,29 +117,25 @@ and is wrapped around the whole page content, except for the footer in this exam
 												class="fa fa-gear"></i> Sign Up</a></li>
 									</c:otherwise>
 								</c:choose>
-
-
-
-
 							</ul></li>
 					</ul>
 
 
 
 					<%-- <ul class="nav navbar-nav navbar-right">
-     			    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Member <span class="caret"></span></a>
-       				<ul class="dropdown-menu">
-       				 <% String host = request.getContextPath(); %>
-		 			 <% String userID = (String)session.getAttribute("userID");
-						if(userID == null){%>
-						<li><a href="<c:url value='/login'/>"><i class="fa fa-user fa-fw"></i> Login</a></li>
-		  			  <% }else{ %>
-          				<li><a href="#"><%=userID%></a></li>
-          				<li><a href="<%=host%>/member/LoginDelete.jsp" class="btn-success">Logout</a></li>
-					<%} %>
-					   <li><a href="<c:url value='/signUp'/>"><i class="fa fa-gear"></i> Sign Up</a></li>
-          		    </ul>
-        			</li>
+                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Member <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                    <% String host = request.getContextPath(); %>
+                 <% String userID = (String)session.getAttribute("userID");
+                  if(userID == null){%>
+                  <li><a href="<c:url value='/login'/>"><i class="fa fa-user fa-fw"></i> Login</a></li>
+                   <% }else{ %>
+                      <li><a href="#"><%=userID%></a></li>
+                      <li><a href="<%=host%>/member/LoginDelete.jsp" class="btn-success">Logout</a></li>
+               <%} %>
+                  <li><a href="<c:url value='/signUp'/>"><i class="fa fa-gear"></i> Sign Up</a></li>
+                    </ul>
+                 </li>
                  </ul> --%>
 				</div>
 			</div>
@@ -147,11 +148,11 @@ and is wrapped around the whole page content, except for the footer in this exam
    <% String host=request.getContextPath();
       String userID = (String)session.getAttribute("userID");%>
      <% if(userID != null){%>
-    	<%=userID %><br><br>
-    	 <form action="<c:url value='/home/home'/>" method="POST">
+       <%=userID %><br><br>
+        <form action="<c:url value='/home/home'/>" method="POST">
           <input class="btn btn-primary" type="submit" name="logout" value="LOGOUT">
          </form>
-    	    <%session.invalidate();%>
+           <%session.invalidate();%>
      <% }else{ %>       
           <form class="form-horizontal" action="<c:url value='/index'/>" method="GET" accept-charset="UTF-8">
                <input id="sp_uname" class="form-control login" type="text" name="userID" placeholder="Username.." />
@@ -161,4 +162,4 @@ and is wrapped around the whole page content, except for the footer in this exam
           <%} %>
               </div>
             </li>
-    	  </ul> --%>
+         </ul> --%>

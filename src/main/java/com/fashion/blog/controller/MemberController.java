@@ -42,8 +42,13 @@ public class MemberController {
 
 		// divided depending on action value
 		if ("insert".equalsIgnoreCase(action)) {
-//			resultMap = (Map<String, Object>) service.saveObject(paramMap);
-			service.saveObject(paramMap);
+			service.saveObject1(paramMap);
+			
+/*			service.saveObject2(paramMap); //SEQ_ID가져옴
+			String seqid = (String) service.saveObject2(paramMap);
+			paramMap.put("SEQ_ID", seqid);*/
+			
+			service.saveObject3(paramMap);
 			viewName = "/home/home";
 			}
 		if (forwardView != null) {
