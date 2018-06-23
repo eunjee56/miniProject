@@ -5,6 +5,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+
 <!-- Navigation bar with social media icons -->
 <div class="w3-bar w3-black w3-hide-small">
 	<a href="https://ko-kr.facebook.com/" class="w3-bar-item w3-button"
@@ -88,18 +89,20 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 
 								<sec:authorize access="isAuthenticated()">
-									<sec:authentication property="principal.username"
-										var="user" />
+									<sec:authentication property="principal.username" var="user" />
 								</sec:authorize>
 								<sec:authorize access="!isAuthenticated()">
 									<sec:authentication property="principal" var="user" />
 								</sec:authorize>
-								
+								<c:set var="principalName"
+									value="${pageContext.request.userPrincipal.name}" />
 								<c:choose>
-									<c:when test="${user!=null}">
+									<c:when test="${user!=null||user!='AnonymousUser'}">
+
 										<li><a href="<c:url value='/login/login'/>"><i
 												class="fa fa-user fa-fw"></i> ${user}</a></li>
-										<li><a href="/member/LoginDelete.jsp" class="btn-success">Logout</a></li>
+										<li><a href="<c:url value='/j_spring_security_logout'/>"
+											class="btn-success">Logout</a></li>
 									</c:when>
 									<c:otherwise>
 										<li><a href="<c:url value='/login/login'/>"><i
