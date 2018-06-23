@@ -73,4 +73,16 @@
 
 	<delete id="delete" parameterType="Map">
 	</delete>
+	
+	<insert id="thumbsup" parameterType="Map">
+		insert into THUMBSUP_HISTORY(
+						POST_NUM,
+						SEQ_ID
+						)
+					values(
+						#{POST_NUM},
+						#{SEQ_ID}
+						)
+					
+	</insert>
 </mapper>

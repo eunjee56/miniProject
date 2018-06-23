@@ -42,6 +42,8 @@ public class RestWSController {
 		if ("fashioncategoryList".equalsIgnoreCase(action)) {
 			resultList = (List<Object>) fashionService.getCategoryList(paramMap);
 			return resultList;
+		}else if ("thumbsup".equalsIgnoreCase(action)) {
+			fashionService.thumbsup(paramMap);
 		}
 
 		return resultObject;

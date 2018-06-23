@@ -43,5 +43,11 @@ public class FashionBoardService {
 		  String sqlMapId = "fashionboard.update";
 		  dao.getUpdate(sqlMapId, dataMap);
 	  }
+	  
+	  public void thumbsup(Object dataMap) {
+		  String sqlMapId = "fashionboard.thumbsup";
+		  dao.saveObject(sqlMapId, dataMap);
+	  }
+
 
 }
